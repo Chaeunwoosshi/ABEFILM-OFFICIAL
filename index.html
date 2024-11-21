@@ -14,25 +14,29 @@
         }
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            align-items: center;
-            
-            background-color: rgba(255, 255, 255, 0); /* Start as transparent */
-            transition: background-color 0.3s ease;
-            z-index: 1000; /* Make sure the header is above other content */
-            padding: 10px 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent at start */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
         }
-        .header.scrolled {
-            background-color: rgba(0, 0, 0, 0.9); /* Black background when scrolled */
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
+.header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9); /* Opaque on scroll */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
         .logo-title {
             display: flex;
             align-items: center;
@@ -45,22 +49,34 @@
             font-size: 20px; /* Adjust title size */
             margin: 0; /* Remove default margin */
         }
-        .watch-now {
-            background-color: #1de7451b; /* Button background color */
-            color: green; /* Button text color */
-            padding: 5px 10px; /* Button padding */
-            border-radius: 5px; /* Rounded corners */
-            text-decoration: none; /* Remove underline */
-            font-size: 14px; /* Button text size */
-            transition: background-color 0.3s; /* Smooth background transition */
+ .download-app {
+            display: inline-flex;
+            align-items: center;
+            background-color: #1df147;
+            color: #101010;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(29, 241, 71, 0.3);
         }
-        .watch-now:hover {
-            background-color: #17b33d; /* Darker shade on hover */
-            color:white;
+
+        .download-app:hover {
+            background-color: #17b33d;
+            transform: scale(1.1);
+            color: #fff;
         }
-        .container {
-            padding: 70px 10px 10px; /* Add padding to avoid overlap with fixed header */
+
+        .download-app img {
+            width: 18px;
+            margin-right: 8px; /* Space between icon and text */
         }
+
+.container {
+    padding: 80px 15px 15px; /* Adjusted padding for header */
+}
         .carousel {
             position: relative;
             width: 100%;
@@ -73,7 +89,7 @@
         }
         .carousel-item {
             min-width: 100%; /* Show one item per screen */
-            height: 150px; /* Fixed height for images */
+            height: 160px; /* Fixed height for images */
             position: relative;
         }
         .carousel-item img {
@@ -107,14 +123,32 @@
         .indicator.active {
             background-color: #1df147; /* Active indicator color */
         }
+        
         .category-section {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
-        .category-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            padding-left: 5px;
-        }
+.category-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 10px;
+    text-transform: uppercase;
+    border-left: 4px solid #1df147;
+    position: relative;
+}
+
+.category-title::before {
+    content: ''; /* You can change this to an icon or any content you prefer */
+    position: absolute;
+    left: -10px; /* Adjust positioning */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #1df147; /* Match category color */
+}
+
+
         .horizontal-slider {
             display: flex;
             overflow-x: auto;
@@ -135,20 +169,21 @@
         }
         .item img {
             width: 100%;
-            height: 150px; /* Fixed height */
+            height: 130px; /* Fixed height */
             object-fit: cover; /* Ensures image fills the space while maintaining aspect ratio */
             display: block;
             border-bottom: 1px solid #333;
             transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Smooth zoom and darkening effect */
         }
-        .item-title {
-            font-size: 12px;
-            padding: 6px;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.item-title {
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    padding: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
         .play-button {
             position: absolute;
             top: 45%;
@@ -192,7 +227,10 @@
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKwFvbQ-9PB5gCKkUGK6RBe83h69HYDZ9mMBclNkDPRjoxNcywQvrXH9KwpnzyQxsMJ8m58zjF3wusgrdAHM5LS0QxxUe2XfRgtwnCCnZSOTderJxJmXe9XN8v7y1UNEhylSHWtsYGF-p8tBiHMMwpIKUG4r6SchmVneEk5RVicWBR-J8/s220/play%20(4).png" alt="Logo" class="logo"> <!-- Replace with your logo path -->
             <h1 class="app-title">ABEFILM</h1>
         </div>
-        <a href="https://abefilmstreamtv.blogspot.com" class="watch-now">WATCH NOW</a>
+<a href="https://abefilmstreamtv.blogspot.com" class="download-app">
+            <img src="https://img.icons8.com/ios/50/ffffff/download.png" alt="Download Icon"> <!-- Replace with your download icon -->
+            Download App
+        </a>
     </div>
 </div>
 
@@ -216,7 +254,7 @@
             const response = await fetch(rssUrl);
             const data = await response.json();
             displayRandomItems(data.items);
-            const orderedCategories = ['Series', 'Movie']; // Order categories here
+            const orderedCategories = ['Short Drama', 'Series', 'Movie']; // Order categories here
             displayCategories(data.items, orderedCategories);
         } catch (error) {
             console.error('Error fetching RSS feed:', error);
