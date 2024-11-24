@@ -80,10 +80,5 @@ document.getElementById('login-submit').addEventListener('click', function () {
   }
 });
 
-
-
-window.onload = function() {
-  applyStyles(); // From the first script
-  checkLoginStatus(); // From the second script
-};
+window.addEventListener('load', checkLoginStatus);
 
