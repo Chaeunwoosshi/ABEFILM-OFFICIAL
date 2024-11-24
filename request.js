@@ -128,3 +128,7 @@ window.onload = function() {
   applyStyles(); // From the first script
 
 };
+
+
+
+window.addEventListener('load', applyStyles);
