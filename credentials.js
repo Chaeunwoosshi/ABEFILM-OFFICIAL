@@ -1,11 +1,3 @@
-// Predefined list of valid users
-const users = [
-  { username: "eunwoo", 
-    password: "eunwoo"}, 
-  { username: "geolliyaah", 
-    password: "143saranghae"}
-  
-];
 
 
 
@@ -27,6 +19,15 @@ function getCookie(name) {
   }
   return "";
 }
+
+// Predefined list of valid users
+const users = [
+  { username: "eunwoo", 
+    password: "eunwoo"}, 
+  { username: "geolliyaah", 
+    password: "143saranghae"}
+  
+];
 
 
 // Function to check if the user is logged in
