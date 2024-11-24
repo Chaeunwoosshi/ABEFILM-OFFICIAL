@@ -45,7 +45,7 @@ function applyStyles() {
     padding: '7px',
     margin: '8px 0',
     fontSize: '14px',
-    border: '1px solid #ccc', 
+    border: '1px solid #222', 
     backgroundColor: '#111', 
     color: 'white',
     borderRadius: '5px',
