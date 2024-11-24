@@ -124,7 +124,4 @@
     });
   }
 
-  // Apply styles when the page is loaded
-  window.onload = function() {
-    applyStyles();
-  };
+  
