@@ -1,6 +1,3 @@
-
-
-
 // Function to set a cookie with expiration time (1 day in this case)
 function setCookie(name, value, days = 1) {
   const date = new Date();
@@ -28,7 +25,6 @@ const users = [
     password: "143saranghae"}
   
 ];
-
 
 // Function to check if the user is logged in
 function checkLoginStatus() {
@@ -81,7 +77,4 @@ document.getElementById('login-submit').addEventListener('click', function () {
   }
 });
 
-window.onload = function() {
-  
-  checkLoginStatus(); // From the second script
-};
+window.addEventListener('load', checkLoginStatus);
