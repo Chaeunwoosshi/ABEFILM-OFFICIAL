@@ -1,3 +1,5 @@
+
+
 // Function to apply styles dynamically
 function applyStyles() {
   const buttonStyle = {
@@ -126,9 +128,6 @@ function applyStyles() {
 window.onload = function() {
 
   applyStyles(); // From the first script
+  
 
 };
-
-
-
-window.addEventListener('load', applyStyles);
