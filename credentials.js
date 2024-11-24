@@ -1,4 +1,4 @@
 const users = [
-  { username: "eunwoo", password: "eunwoo" },
+  { username: "eunwoosshi", password: "eunwoosshi" },
   { username: "geolliyaah", password: "143saranghae" }
 ];
