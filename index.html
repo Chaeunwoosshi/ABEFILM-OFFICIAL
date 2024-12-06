@@ -149,13 +149,21 @@
 }
 
 
-        .horizontal-slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
-        }
+    .horizontal-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+
+    /* Hide the scrollbar */
+    scrollbar-width: none; /* For Firefox */
+}
+
+.horizontal-slider::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}
+
         .item {
             flex: 0 0 auto;
             width: 100px; /* Ensures three items fit on the screen */
