@@ -267,6 +267,97 @@ border:
     font-size: 18px;
     cursor: pointer;
 }
+    /* Floating Social Media Bar */
+        .floating-social-bar {
+            position: fixed;
+            top: 70%;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .floating-social-bar a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .floating-social-bar a:hover {
+            background-color: #1df147; /* Green hover color */
+            transform: scale(1.1);
+        }
+
+        .floating-social-bar a img {
+            width: 35px;
+            height: px;
+        }
+       
+       /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 45px; /* Adjusted size */
+            height: 45px; /* Adjusted size */
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top img {
+            width: 20px; /* Adjust icon size */
+            height: 20px;
+            z-index: 2;
+        }
+
+        /* Circular Progress Bar */
+        .progress-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 2; /* Thinner stroke */
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+
+        .progress-ring circle.background {
+            stroke: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-ring circle.progress {
+            stroke: #1df147;
+            stroke-dasharray: 126; /* Circumference of the circle (2πr) */
+            stroke-dashoffset: 126; /* Start with full offset */
+            transition: stroke-dashoffset 0.2s linear;
+        }
       </style>
 <body>
 
@@ -306,6 +397,68 @@ border:
 
 <div class="post-item" onclick="showPopup({title: 'Post Title 1'})"></div>
 <div class="post-item" onclick="showPopup({title: 'Post Title 2'})"></div>
+
+    <!-- Floating Social Media Bar -->
+    <div class="floating-social-bar">
+        <a href="https://facebook.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook">
+        </a>
+        <a href="https://twitter.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" alt="Telegram">
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/128/5692/5692284.png" alt="Page">
+        </a>
+
+    </div>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top">
+        <!-- Circular Progress Bar -->
+        <svg class="progress-ring" width="45" height="45">
+            <circle class="background" cx="22.5" cy="22.5" r="20"></circle>
+            <circle class="progress" cx="22.5" cy="22.5" r="20"></circle>
+        </svg>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/up.png" alt="Back to Top">
+    </div>
+
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+        const progressCircle = document.querySelector('.progress-ring .progress');
+        const circleRadius = 20; // Same as the 'r' in SVG
+        const circumference = 2 * Math.PI * circleRadius;
+
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+
+        // Function to set progress
+        function setProgress(scrollPercentage) {
+            const offset = circumference - (scrollPercentage / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        // Show/Hide Back to Top button and update progress bar
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollTop = window.scrollY;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+            if (scrollTop > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+
+            setProgress(scrollPercentage);
+        });
+
+        // Scroll to top when Back to Top button is clicked
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 <script>
 function showPopup(item) {
     console.log("Popup function called with item:", item);
@@ -339,7 +492,6 @@ function showPopup(item) {
 }
 </script>
 
-</script>
 
 <script>
     const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.blogger.com%2Ffeeds%2F3434317895581666633%2Fposts%2Fdefault&api_key=f1wz56jkpxrjxaruc4pum1xymrkfa8fxodu8i9xh&count=99';
