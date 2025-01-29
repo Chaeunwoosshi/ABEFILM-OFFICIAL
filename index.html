@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streaming App</title>
+
+
     <style>
+
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
-            margin: 0;
+            margin: 5px 10px;
             padding: 0;
         }
         .header {
@@ -37,6 +39,9 @@
     align-items: center;
     width: 100%;
 }
+ .header-content a{
+   color:#232323;
+ }
         .logo-title {
             display: flex;
             align-items: center;
@@ -62,119 +67,130 @@
             transition: transform 0.3s ease, background-color 0.3s;
             box-shadow: 0 4px 6px rgba(29, 241, 71, 0.3);
         }
-
         .download-app:hover {
             background-color: #17b33d;
             transform: scale(1.1);
             color: #fff;
         }
-
         .download-app img {
             width: 18px;
             margin-right: 8px; /* Space between icon and text */
         }
 
-.container {
-    padding: 80px 15px 15px; /* Adjusted padding for header */
-}
-        .carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
+     /* Basic styling for the input element */
+        input[type="text"] {
+            width: 100%;  /* Full width */
+            padding: 10px;  /* Padding for inner spacing */
+            border: 2px solid #ccc;  /* Light border */
+            border-radius: 5px;  /* Rounded corners */
+            font-size: 16px;  /* Font size */
+            color: #333;  /* Text color */
+            background-color: #f9f9f9;  /* Light background */
+            box-sizing: border-box;  /* Ensures padding is included in width */
+            transition: border-color 0.3s ease;  /* Smooth transition on border color */
+        }
+
+        /* Change border color on focus */
+        input[type="text"]:focus {
+            border-color: #1df147;  /* Green border on focus */
+            outline: none;  /* Remove default outline */
+        }
+
+        /* Add placeholder styling */
+        input[type="text"]::placeholder {
+            color: #888;  /* Placeholder text color */
+            font-style: italic;  /* Italic placeholder text */
+        }
+
+        /* Optional: Styling for a container */
+        .input-container {
+            margin: 0px 5px 0 0;
+            max-width: 400px;  /* Set a maximum width */
+        }
+
+   #content-container{
+     padding:15px 10px;
+   }
+  #abefilmpost-search-container {
+            display: flex;
+            align-items: center;
+            gap: 0px;
             margin-bottom: 20px;
         }
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-item {
-            min-width: 100%; /* Show one item per screen */
-            height: 150px; /* Fixed height for images */
-            position: relative;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        #abefilmpost-search-bar {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #00800049;
             border-radius: 5px;
+            background-color: #00800018;
+            color: var(--text-color);
+            width: 100%; /* Search bar takes 100% of the width */
         }
-        .carousel-title {
-            position: absolute;
-            bottom: -5px;
-            left: 0px;
-            font-size: 15px;           
-            padding: 10px;
+        #abefilmpost-filter-dropdown, #abefilmpost-author-dropdown {
+            padding: 8px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-top:0px;
+            margin-left:5px;
+            font-size: 12px;
+            border: 1px solid #00800049;
             border-radius: 5px;
+            background-color: #00800018;
+            color: var(--text-color);
+            width: 25%; /* Filters take 20% of the width each */
         }
-        .carousel-indicators {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            display: flex;
-        }
-        .indicator {
-            height: 5px;
-            width: 5px;
-            margin: 0 3px;
-            border-radius: 10%;
-            background-color: #a1a1a1;
-            cursor: pointer;
-        }
-        .indicator.active {
-            background-color: #1df147; /* Active indicator color */
+        #abefilmpost-filter-dropdown {
+            text-transform: capitalize;
+            
         }
         
-        .category-section {
-    margin-bottom: 20px;
-}
+select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
 
-.category-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-    padding-left: 5px;
-}
-
-/* Change the horizontal-slider to a grid layout */
-.horizontal-slider {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-    gap: 10px; /* Space between items */
-    margin-bottom: 20px;
-    padding: 0 10px; /* Optional padding for spacing */
-}
-
-/* Item styling for grid layout */
-.item {
-    width: 100%; /* Ensures each item fills its grid cell */
-    border: solid 1px var(--border-color);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    color: var(---text-color);
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Image inside the item */
-.item img {
-    width: 100%;
-    height: 150px; /* Fixed height */
-    object-fit: cover;
-    display: block;
-    border-bottom: 1px solid #333;
-    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-}
-
-/* Title styling */
-.item-title {
-    font-size: 12px;
-    padding: 6px;
-    text-align: center;
-    color: var(---text-color);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        /* Remove focus outline from the dropdown */
+        select:focus {
+            outline: none;  /* Remove default outline */
+            border-color: #ccc;  /* Maintain the border color */
+            background-color: #f9f9f9;  /* Keep the background color the same */
+        }
+        .abefilmpost-movie-grid {
+          
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .abefilmpost-movie-card {
+            background-color: var(--background-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        .abefilmpost-movie-card:hover {
+            transform: scale(1.05);
+        }
+        .abefilmpost-thumbnail {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+        .abefilmpost-movie-info {
+            padding: 5px;
+            text-align: center;
+        }
+        .abefilmpost-title {
+            font-size: 12px;
+            margin: 2px 0;
+            font-weight:normal;
+        }
+        
+       
 
 /* Mobile (up to 768px): 3 columns per row */
 @media (max-width: 768px) {
@@ -223,50 +239,7 @@
             color: inherit;
         }
         
-.popup-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none; /* Hidden by default */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
 
-.popup-content {
-    position: relative; /* Ensures close button is positioned correctly */
-    background:
-rgba( 255, 255, 255, 0.1 );
-box-shadow:
-0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter:
-blur( 10px );
--webkit-backdrop-filter:
-blur( 10px );
-border-radius:
-10px;
-border:
-1px solid rgba( 255, 255, 255, 0.18 );
-    padding: 20px;
-    color: #fff;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.popup-close {
-    position: absolute;
-    top: 8px;
-    color:crimson;
-    right: 12px;
-    font-size: 18px;
-    cursor: pointer;
-}
     /* Floating Social Media Bar */
         .floating-social-bar {
             position: fixed;
@@ -358,6 +331,23 @@ border:
             stroke-dashoffset: 126; /* Start with full offset */
             transition: stroke-dashoffset 0.2s linear;
         }
+    #load-more-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background-color: #0aa20a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+#load-more-btn:hover{
+  background-color: green;
+}
+a{
+  text-decoration: none;
+}
       </style>
 <body>
 
@@ -368,36 +358,12 @@ border:
             <h1 class="app-title">ABEFILM</h1>
         </div>
         
-<a href="https://abefilmstreamtv.blogspot.com/?m=1" class="download-app" download="ABEFILM.apk">
+<a href="https://github.com/Chaeunwoosshi/ABEFILM-OFFICIAL/raw/refs/heads/main/ABEFILM_1_1.0_sign.apk" class="download-app" download="ABEFILM.apk">
             <img src="https://img.icons8.com/ios/50/ffffff/download.png" alt="Download Icon"> <!-- Replace with your download icon -->
-            Watch Here
+            Download Our App
         </a>
     </div>
 </div>
-
-<div class="container" id="content-container">
-    <div class="carousel" id="random-carousel">
-        <div class="carousel-track" id="random-slider">
-            <!-- Random items will be loaded here -->
-        </div>
-        <div class="carousel-indicators" id="carousel-indicators">
-            <!-- Indicator dots will be loaded here -->
-        </div>
-    </div>
-    <!-- Dynamic content will be loaded here -->
-</div>
-
-<div id="popup-modal" class="popup-modal">
-    <div class="popup-content">
-        <span id="popup-close" class="popup-close">&times;</span>
-        <h2 id="popup-title"></h2>
-        <p id="popup-message"></p> <!-- Ensure this element is empty to be updated by JS -->
-    </div>
-</div>
-
-<div class="post-item" onclick="showPopup({title: 'Post Title 1'})"></div>
-<div class="post-item" onclick="showPopup({title: 'Post Title 2'})"></div>
-
     <!-- Floating Social Media Bar -->
     <div class="floating-social-bar">
         <a href="https://ift.tt/zakLurY " target="_blank">
@@ -411,7 +377,6 @@ border:
         </a>
 
     </div>
-
     <!-- Back to Top Button -->
     <div id="back-to-top">
         <!-- Circular Progress Bar -->
@@ -421,7 +386,6 @@ border:
         </svg>
         <img src="https://img.icons8.com/ios-filled/50/ffffff/up.png" alt="Back to Top">
     </div>
-
     <script>
         const backToTopButton = document.getElementById('back-to-top');
         const progressCircle = document.querySelector('.progress-ring .progress');
@@ -459,177 +423,157 @@ border:
             });
         });
     </script>
-<script>
-function showPopup(item) {
-    console.log("Popup function called with item:", item);
+<br><br><br><br>
 
-    const modal = document.getElementById('popup-modal');
-    const popupTitle = document.getElementById('popup-title');
-    const popupMessage = document.getElementById('popup-message');
-
-    // Set title and message dynamically
-    popupTitle.textContent = item.title || "No Title"; // Fall back to 'No Title' if item.title is undefined
-    popupMessage.textContent = 'Access the app to watch with a variety of options available.'; // Correctly set the message
-
-    // Display the modal
-    modal.style.display = 'flex'; // Use flex for centering
-    console.log("Modal displayed with message:", popupMessage.textContent);
-
-    // Close button logic
-    const closeBtn = document.getElementById('popup-close');
-    closeBtn.onclick = () => {
-        modal.style.display = 'none';
-        console.log("Modal closed");
-    };
-
-    // Close when clicking outside the modal content
-    window.onclick = (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            console.log("Modal closed by clicking outside");
-        }
-    };
-}
-</script>
-
+       
+       
+<div id="content-container">
+    <div id="abefilmpost-search-container">
+    <div class="input-container">
+        <input type="text" id="abefilmpost-search-bar" placeholder="Search by title...">
+    </div>
+        <select id="abefilmpost-filter-dropdown">
+            <option value="all">Genres</option>
+        </select>
+        <select id="abefilmpost-author-dropdown">
+            <option value="all">Authors</option>
+        </select>
+    </div>
+    <div class="abefilmpost-movie-grid" id="abefilmpost-movie-grid"></div>
 
 <script>
-    const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.blogger.com%2Ffeeds%2F3434317895581666633%2Fposts%2Fdefault&api_key=f1wz56jkpxrjxaruc4pum1xymrkfa8fxodu8i9xh&count=99';
+  
+  
+    // Use unique variable names for Blogger-related elements
+    let bloggerPosts = []; // Store all posts from Blogger feed
+    let bloggerMovieGrid = document.getElementById('abefilmpost-movie-grid');
+    let bloggerFilterDropdown = document.getElementById('abefilmpost-filter-dropdown');
+    let bloggerAuthorDropdown = document.getElementById('abefilmpost-author-dropdown');
+    let bloggerSearchBar = document.getElementById('abefilmpost-search-bar');
 
-    async function fetchRSSData() {
-        try {
-            const response = await fetch(rssUrl);
-            const data = await response.json();
-            displayRandomItems(data.items);
-            const orderedCategories = ['Short Drama', 'Series', 'Movie']; // Order categories here
-            displayCategories(data.items, orderedCategories);
-        } catch (error) {
-            console.error('Error fetching RSS feed:', error);
-        }
+    // Recursive function to fetch all posts using JSONP
+    function fetchBloggerPosts(url) {
+        const script = document.createElement('script');
+        script.src = `${url}&callback=handleBloggerPosts`;
+        document.body.appendChild(script);
     }
 
-    function extractImageFromContent(content) {
-        const imgTag = content.match(/<img.*?src="(.*?)"/);
-        return imgTag ? imgTag[1] : 'https://via.placeholder.com/100x150'; // Fallback image with appropriate size
-    }
+    // Callback function to process Blogger posts
+    function handleBloggerPosts(json) {
+        const entries = json.feed.entry || [];
+        const genres = new Set();
+        const authors = new Set();
 
-    function displayRandomItems(items) {
-        const randomSlider = document.getElementById('random-slider');
-        const indicatorsContainer = document.getElementById('carousel-indicators');
-        const shuffledItems = items.sort(() => 0.5 - Math.random()); // Shuffle items
-        const randomItems = shuffledItems.slice(0, 5); // Get 5 random items
-
-        randomItems.forEach((item, index) => {
-            const sliderItem = document.createElement('div');
-            sliderItem.className = 'carousel-item';
-            sliderItem.onclick = () => showPopup(item); // Add click event to show popup
-
-            const img = document.createElement('img');
-            img.src = extractImageFromContent(item.content || item.description);
-            sliderItem.appendChild(img);
-
-            const title = document.createElement('div');
-            title.className = 'carousel-title';
-            title.textContent = item.title;
-            sliderItem.appendChild(title);
-
-            randomSlider.appendChild(sliderItem);
-
-            // Create indicators
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator' + (index === 0 ? ' active' : '');
-            indicator.dataset.index = index; // Set the index for the indicator
-            indicatorsContainer.appendChild(indicator);
-        });
-
-        // Automatic slide functionality
-        let currentIndex = 0;
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % randomItems.length;
-            updateCarousel(currentIndex);
-        }, 3000); // Change slide every 3 seconds
-    }
-
-    function updateCarousel(index) {
-        const carouselTrack = document.getElementById('random-slider');
-        const indicators = document.querySelectorAll('.indicator');
-
-        // Move carousel to the current index
-        const offset = index * 100; // 100% for one item
-        carouselTrack.style.transform = `translateX(-${offset}%)`;
-
-        // Update indicators
-        indicators.forEach((indicator, idx) => {
-            indicator.classList.toggle('active', idx === index);
-        });
-    }
-
-    function displayCategories(items, orderedCategories) {
-        const container = document.getElementById('content-container');
-        const categories = {};
-
-        items.forEach(item => {
-            item.categories.forEach(category => {
-                if (!categories[category]) {
-                    categories[category] = [];
-                }
-                categories[category].push(item);
-            });
-        });
-
-        orderedCategories.forEach(category => {
-            if (categories[category]) {
-                const categorySection = document.createElement('div');
-                categorySection.className = 'category-section';
-
-                const categoryTitle = document.createElement('div');
-                categoryTitle.className = 'category-title';
-                categoryTitle.textContent = category;
-                categorySection.appendChild(categoryTitle);
-
-                const slider = document.createElement('div');
-                slider.className = 'horizontal-slider';
-
-                categories[category].forEach(item => {
-                    const sliderItem = document.createElement('div');
-                    sliderItem.className = 'item';
-                    sliderItem.onclick = () => showPopup(item); // Add click event to show popup
-
-                    const img = document.createElement('img');
-                    img.src = extractImageFromContent(item.content || item.description);
-                    sliderItem.appendChild(img);
-
-                    const playButton = document.createElement('div');
-                    playButton.className = 'play-button';
-                    sliderItem.appendChild(playButton);  // Keep the play button
-
-                    const title = document.createElement('div');
-                    title.className = 'item-title';
-                    title.textContent = item.title;
-                    sliderItem.appendChild(title);
-
-                    slider.appendChild(sliderItem);
-                });
-
-                categorySection.appendChild(slider);
-                container.appendChild(categorySection);
+        // Iterate through each post and store necessary details
+        entries.forEach(entry => {
+            let thumbnail = entry.media$thumbnail?.url || "https://via.placeholder.com/150";
+            if (thumbnail.includes('s72-c')) {
+                thumbnail = thumbnail.replace('s72-c', 's400');
             }
+            const genre = entry.category ? entry.category.map(cat => cat.term.toLowerCase()) : [];
+            const author = entry.author[0].name.$t;
+
+            bloggerPosts.push({
+                title: entry.title.$t,
+                url: entry.link.find(link => link.rel === 'alternate').href,
+                thumbnail,
+                genre,
+                author
+            });
+
+            genre.forEach(g => genres.add(g));
+            authors.add(author);
+        });
+
+        populateBloggerFilterDropdown([...genres]);
+        populateBloggerAuthorDropdown([...authors]);
+
+        const nextLink = json.feed.link.find(link => link.rel === "next");
+        if (nextLink) {
+            fetchBloggerPosts(nextLink.href + "&alt=json-in-script");
+        } else {
+            renderBloggerPosts(bloggerPosts); // Once all posts are fetched, render them
+        }
+    }
+
+    // Populate genre filter dropdown
+    function populateBloggerFilterDropdown(genres) {
+        genres.sort().forEach(genre => {
+            const option = document.createElement('option');
+            option.value = genre;
+            option.textContent = capitalizeFirstLetter(genre);
+            bloggerFilterDropdown.appendChild(option);
         });
     }
 
+    // Populate author dropdown
+    function populateBloggerAuthorDropdown(authors) {
+        authors.sort().forEach(author => {
+            const option = document.createElement('option');
+            option.value = author.toLowerCase();
+            option.textContent = author;
+            bloggerAuthorDropdown.appendChild(option);
+        });
+    }
 
-    // Change header background on scroll
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 100) { // Change 100 to the desired scroll height
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    // Capitalize first letter of genre (or any string)
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 
-    fetchRSSData();
+    // Render Blogger posts as movie cards
+    function renderBloggerPosts(posts) {
+        bloggerMovieGrid.innerHTML = '';
+        posts.forEach(post => {
+            const movieCard = document.createElement('div');
+            movieCard.className = 'abefilmpost-movie-card';
+            movieCard.innerHTML = `
+                <a href="${post.url}" target="_blank">
+                    <img class="abefilmpost-thumbnail" src="${post.thumbnail}" alt="${post.title}">
+                </a>
+                <div class="abefilmpost-movie-info">
+                    <h3 class="abefilmpost-title">${post.title}</h3>
+                </div>
+            `;
+            bloggerMovieGrid.appendChild(movieCard);
+        });
+    }
+
+    // Apply filters (genre, author, and search query) to Blogger posts
+    function applyBloggerFilters() {
+        const query = bloggerSearchBar.value.toLowerCase();
+        const genreFilter = bloggerFilterDropdown.value;
+        const authorFilter = bloggerAuthorDropdown.value;
+
+        const filteredPosts = bloggerPosts.filter(post => {
+            const matchesSearch = post.title.toLowerCase().includes(query);
+            const matchesGenre = genreFilter === "all" || post.genre.includes(genreFilter);
+            const matchesAuthor = authorFilter === "all" || post.author.toLowerCase() === authorFilter;
+            return matchesSearch && matchesGenre && matchesAuthor;
+        });
+
+        renderBloggerPosts(filteredPosts);
+    }
+
+    // Add event listeners
+    bloggerSearchBar.addEventListener('input', applyBloggerFilters);
+    bloggerFilterDropdown.addEventListener('change', applyBloggerFilters);
+    bloggerAuthorDropdown.addEventListener('change', applyBloggerFilters);
+
+    // Start fetching all Blogger posts
+    const initialBloggerFeedUrl = "https://abefilmstreamtv.blogspot.com/feeds/posts/summary?alt=json-in-script&max-results=500";
+    fetchBloggerPosts(initialBloggerFeedUrl);
+    
+    
 </script>
+
+<a href="https://abefilmstreamtv.blogspot.com/?m=1">
+<button id="load-more-btn">Visit our Website to See More</button>
+</a>
+
+    </div>
+
+
 
 
 
