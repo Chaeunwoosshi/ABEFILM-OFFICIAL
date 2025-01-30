@@ -172,13 +172,49 @@ select {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s;
         }
-@media only screen and (min-width: 720px) {
+
+@media only screen and (min-width: 420px) {
+.abefilmpost-movie-grid {
+            grid-template-columns: repeat(4, 1fr);
+            .abefilmpost-thumbnail {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+            
+        }
+}
+@media only screen and (min-width: 510px) {
+.abefilmpost-movie-grid {
+            grid-template-columns: repeat(5, 1fr);
+            
+        }
+}
+
+@media only screen and (min-width: 620px) {
 .abefilmpost-movie-grid {
             grid-template-columns: repeat(6, 1fr);
             
         }
 }
-        .abefilmpost-movie-card:hover {
+@media only screen and (min-width: 720px) {
+.abefilmpost-movie-grid {
+            grid-template-columns: repeat(7, 1fr);
+            
+        }
+}
+@media only screen and (min-width: 1000px) {
+.abefilmpost-movie-grid {
+            grid-template-columns: repeat(9, 1fr);
+            
+        }
+         .abefilmpost-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+}
+    .abefilmpost-movie-card:hover {
             transform: scale(1.05);
         }
         .abefilmpost-thumbnail {
