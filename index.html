@@ -13,7 +13,6 @@
             color: #ffffff;
             margin: 5px 10px;
             padding: 0;
-        }
         .header {
             position: fixed;
     top: 0;
@@ -212,6 +211,7 @@ select {
     width: 100%;
     aspect-ratio: 2 / 3; /* Adjust for movie poster-like ratio */
     object-fit: cover;
+    position: relative; /* Ensure the play button is positioned relative to the image */
 }
         .abefilmpost-movie-info {
             padding: 5px;
@@ -240,7 +240,7 @@ select {
 }
         .play-button {
             position: absolute;
-            top: 45%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.5);
@@ -258,14 +258,14 @@ select {
             color: #1df147; /* Green color for play icon */
             font-size: 25px;
             line-height: 40px;
-            margin-left:2px;
+            margin-left:3px;
         }
         .item:hover .play-button {
             opacity: 1;
         }
-        .item:hover img {
-            transform: scale(1.1); /* Zoom in on hover */
-            filter: brightness(0.5); /* Darken image on hover */
+        .item:hover .abefilmpost-thumbnail {
+            transform: scale(1.02); /* Subtle zoom effect */
+            filter: brightness(0.8); /* Darken image on hover */
         }
         .item a {
             text-decoration: none;
@@ -561,11 +561,16 @@ a{
             const movieCard = document.createElement('div');
             movieCard.className = 'abefilmpost-movie-card';
             movieCard.innerHTML = `
-                <a href="${post.url}" target="_blank">
-                    <img class="abefilmpost-thumbnail" src="${post.thumbnail}" alt="${post.title}">
-                </a>
-                <div class="abefilmpost-movie-info">
-                    <h3 class="abefilmpost-title">${post.title}</h3>
+                <div class="item">
+                    <a href="${post.url}" target="_blank">
+                        <div class="abefilmpost-thumbnail">
+                            <img src="${post.thumbnail}" alt="${post.title}">
+                            <div class="play-button"></div>
+                        </div>
+                    </a>
+                    <div class="abefilmpost-movie-info">
+                        <h3 class="abefilmpost-title">${post.title}</h3>
+                    </div>
                 </div>
             `;
             bloggerMovieGrid.appendChild(movieCard);
