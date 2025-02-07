@@ -1,6 +1,46 @@
 
 
 
+//TO HIDE THE FOOTER OR THE OTHER CONTENT WHEN CLICKING THE TAB
+document.addEventListener("DOMContentLoaded", function () {
+    let isPostPage = document.querySelector(".post-body") !== null;
+    let footer = document.querySelector(".footer-wrapper");
+    let mainContent = document.querySelector(".main-content");
+    let tabRelated = document.querySelector(".tab-related");
+
+    if (isPostPage) {
+        // Hide footer only on post pages
+        if (footer) {
+            footer.style.display = "none";
+        }
+
+        // Force reflow after setting display properties
+        setTimeout(() => {
+            document.documentElement.style.height = "auto";
+            document.documentElement.offsetHeight; // Trigger reflow
+        }, 100);
+    }
+
+    document.querySelector(".tab-comment")?.addEventListener("click", function () {
+        document.querySelectorAll(".HTML, .footer-wrapper").forEach(el => el.style.display = "none");
+        if (mainContent) mainContent.style.display = "block";
+    });
+
+    tabRelated?.addEventListener("click", function () {
+        document.querySelectorAll(".HTML, .main-content").forEach(el => el.style.display = "block");
+
+        if (isPostPage && footer) {
+            footer.remove();
+        }
+
+        // Force reflow again when switching back to related tab
+        setTimeout(() => {
+            document.documentElement.style.height = "auto";
+            document.documentElement.offsetHeight;
+        }, 100);
+    });
+});
+
 
 
 //APPLYING COLOR TO LABEL IN THE SIDEBAR
@@ -68,6 +108,9 @@ for (var i = 0; i < genreLinks.length; i++) {
 }
 
 
+
+
+
 //APPLYING COLOR TO LABEL OF THE INSIDE THE POST
 document.addEventListener("DOMContentLoaded", function () {
     let allLabels = new Set();
@@ -116,6 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return index !== -1 ? colors[index % colors.length] : "rgb(128, 128, 128)"; // Default gray if not found
     }
 });
+
+
 
 //   TO DISPLAY THE AUTHOR PROFILE
 document.addEventListener("DOMContentLoaded", function () {
