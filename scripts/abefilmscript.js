@@ -4,24 +4,33 @@
 //APPLYING COLOR TO LABEL OF THE INSIDE THE POST
 document.addEventListener("DOMContentLoaded", function () {
     let allLabels = new Set();
+
+    // Collect all unique label names
     document.querySelectorAll(".label-link").forEach(link => {
         let labelText = link.textContent.trim().toLowerCase();
         allLabels.add(labelText);
     });
-    console.log([...allLabels]); // Log all unique labels in console    
+
+    console.log([...allLabels]); // Log all unique labels in console
+
+    // Apply colors
     applyDynamicLabelColors([...allLabels]);
+
     function applyDynamicLabelColors(labels) {
         document.querySelectorAll(".label-link").forEach(link => {
             let labelText = link.textContent.trim().toLowerCase();
-            let color = getLabelColor(labelText, labels);            
+            let color = getLabelColor(labelText, labels);
+
+            // Apply dynamic colors
             link.style.setProperty("color", color, "important");
             link.style.setProperty("background-color", color.replace("rgb", "rgba").replace(")", ", 0.2)"), "important");
             link.style.setProperty("padding", "2px 5px", "important");
             link.style.setProperty("border-radius", "3px", "important");
             link.style.setProperty("display", "inline-block", "important");
-            link.style.setProperty("font-weight", "bold", "important"); 
+            link.style.setProperty("font-weight", "bold", "important"); // Optional bold text
         });
     }
+
     function getLabelColor(label, labels) {
         const colors = [
             "rgb(255, 0, 127)",  // Pink
@@ -35,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "rgb(255, 140, 0)",  // Dark Orange
             "rgb(46, 139, 87)"   // Sea Green
         ];
+
         let index = labels.indexOf(label);
         return index !== -1 ? colors[index % colors.length] : "rgb(128, 128, 128)"; // Default gray if not found
     }
