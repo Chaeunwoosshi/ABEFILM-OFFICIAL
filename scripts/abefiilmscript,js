@@ -1,6 +1,6 @@
- 
-//DESIGN BEFORE TITLE OF EACH WIDGET
-
+    
+ <script type='text/javascript'>
+// <![CDATA[
 document.addEventListener('DOMContentLoaded', function () {
     function styleTitle() {
         var titles = document.querySelectorAll('.main-title .title'); // Select all target elements
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     styleTitle();
 });
 
+
     
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -66,11 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
- 
+// ]]>
+          
+</script>    
     
-
-// EPISODES FUNCTION
-
+<script>
+// <![CDATA[
 document.addEventListener('DOMContentLoaded', function () {
     const episodes = document.querySelectorAll(".epi.btn");
     const iframe = document.querySelector(".youtube-responsive iframe");
@@ -96,12 +98,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+// ]]>
+</script>
 
 
-
-
-//MODAL 
-
+<script>
+// <![CDATA[
 document.addEventListener("DOMContentLoaded", function () {
     var modalBtn = document.getElementById("modalbtn");
     var myModal = document.getElementById("mymodal");
@@ -124,10 +126,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+// ]]>
+</script>
 
 
-
-//COLOR LABEL DESIGN IN THUMBNAIL
+  <script type='text/javascript'>
+// <![CDATA[
 
 document.addEventListener('DOMContentLoaded', function () {
     var gradients = [
@@ -170,15 +174,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var gradient = gradients[index % gradients.length];
             label.style.backgroundImage = gradient;
             label.style.color = '#fff'; // Set text color to white
-            label.style.padding = '2px 5px'; // Add some padding
+            label.style.padding = '1px 4px'; // Add some padding
             label.style.borderRadius = '4px'; // Rounded corners
             label.style.display = 'inline-block'; // Ensure inline block display
 
-            // Set borders only for top-right and bottom-left
-            label.style.borderTop = `2px solid ${gradients[index % gradients.length].split(',')[0].split('(')[1].trim()}`; // Top border from gradient color
-            label.style.borderRight = 'none'; // No right border
-            label.style.borderBottom = `2px solid #FFC0CB`; // Bottom border from a specific color (or gradient stop)
-            label.style.borderLeft = 'none'; // No left border
+            label.style.fontSize = '8px';
             label.style.borderRadius = '0 5px 0px 5px'; // Border radius for top-right and bottom-left corners
         });
     }
@@ -190,13 +190,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var observer = new MutationObserver(styleLabels);
     observer.observe(document.body, { childList: true, subtree: true });
 });
- 
-    
- 
-    
-
-// BACK TO TOP
-
+// ]]>
+          
+</script>    
+      
+<script>
+// <![CDATA[
 document.addEventListener('DOMContentLoaded', function () {
     const backToTop = document.querySelector('#back-top');
 
@@ -260,11 +259,11 @@ document.addEventListener('DOMContentLoaded', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
-
-
+// ]]>
+</script>
    
- //SEARCH HEADER FUNCTION 
-
+<script>
+//<![CDATA[
 document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.querySelector("input[name='q']");
   const resultsContainer = document.createElement('div');
@@ -357,10 +356,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
+//]]>
+</script>
     
     
-//COMMENT OR REQUEST FORM
+<script type='text/javascript'>
+// <![CDATA[
 
 // Function to apply styles dynamically
 function applyStyles() {
@@ -488,9 +489,13 @@ window.onload = function() {
     applyStyles();
 };
 
+// ]]>
+</script>
+    
+    
+<script>
+// <![CDATA[
 
-
-//RELATED POST IFRAME
 document.addEventListener("DOMContentLoaded", function() {
     let iframe = document.querySelector(".abefilm-iframe"); // Select the unique iframe
     if (iframe) {
@@ -500,276 +505,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
-
-//BOOKMARK 
-
-// variable empty konten
-var massgEmpty = ('Your Favorite'),
-articleLabel = ('No saved Drama or Movie'),
-link_articleLabel = ('https://abefilmstreamtv.blogspot.com/');
-(function ($) {
-  "use strict";
-  var OptionManager = (function () {
-    var objToReturn = {};
-    var defaultOptions = {
-      bookmarkIcon: 'bookmarkIcon',
-      bookmarkBadge: 'show-bookmark',
-      articleQuantity: 'article-quantity',
-      affixBookmarkIcon: true,
-      showBookmarkModal: true,
-      clickOnAddToBookmark: function($addTobookmark) { },
-      clickOnbookmarkIcon: function($bookmarkIcon, konten ) { },
-    };
-    var getOptions = function (customOptions) {
-      var options = $.extend({}, defaultOptions);
-      if (typeof customOptions === 'object') {
-        $.extend(options, customOptions);
-      }
-      return options;
-    }
-    objToReturn.getOptions = getOptions;
-    return objToReturn;
-  }());
-  var articleManager = (function(){
-    var objToReturn = {};
-    localStorage.konten = localStorage.konten ? localStorage.konten : "";
-    var getIndexOfarticle = function(id){
-      var articleIndex = -1;
-      var konten = getAllkonten();
-      $.each(konten, function(index, value){
-        if(value.id == id){
-          articleIndex = index;
-          return;
-        }
-      });
-      return articleIndex;
-    }
-    var setAllkonten = function(konten){
-      localStorage.konten = JSON.stringify(konten);
-    }
-    var addarticle = function(id, title, link, summary, quantity, borkimage) {
-      var konten = getAllkonten();
-      konten.push({
-        id: id,
-        title: title,
-        link: link,
-        summary: summary,
-        quantity: quantity,
-        borkimage: borkimage
-      });
-      setAllkonten(konten);
-    }
-    var getAllkonten = function(){
-      try {
-        var konten = JSON.parse(localStorage.konten);
-        return konten;
-      } catch (e) {
-        return [];
-      }
-    }
-    var updatePoduct = function(id, quantity) {
-      var articleIndex = getIndexOfarticle(id);
-      if(articleIndex < 0){
-        return false;
-      }
-      var konten = getAllkonten();
-      konten[articleIndex].quantity = typeof quantity === "undefined" ? konten[articleIndex].quantity : quantity;
-      setAllkonten(konten);
-      return true;
-    }
-    var setarticle = function(id, title, link, summary, quantity, borkimage) {
-      if(typeof id === "undefined"){
-        console.error("id required")
-        return false;
-      }
-      if(typeof title === "undefined"){
-        console.error("title required")
-        return false;
-      }
-      if(typeof link === "undefined"){
-        console.error("link required")
-        return false;
-      }
-      if(typeof borkimage === "undefined"){
-        console.error("borkimage required")
-        return false;
-      }
-      summary = typeof summary === "undefined" ? "" : summary;
-
-      if(!updatePoduct(id)){
-        addarticle(id, title, link, summary, quantity, borkimage);
-      }
-    }
-    var cleararticle = function(){
-      setAllkonten([]);
-    }
-    var removearticle = function(id){
-      var konten = getAllkonten();
-      konten = $.grep(konten, function(value, index) {
-        return value.id != id;
-      });
-      setAllkonten(konten);
-    }
-    var getTotalQuantity = function(){
-      var total = 0;
-      var konten = getAllkonten();
-      $.each(konten, function(index, value){
-        total += value.quantity;
-      });
-      return total;
-    }
-    objToReturn.getAllkonten = getAllkonten;
-    objToReturn.updatePoduct = updatePoduct;
-    objToReturn.setarticle = setarticle;
-    objToReturn.cleararticle = cleararticle;
-    objToReturn.removearticle = removearticle;
-    objToReturn.getTotalQuantity = getTotalQuantity;
-    return objToReturn;
-  }());
-  var loadBookmarkEvent = function(userOptions){
-    var options = OptionManager.getOptions(userOptions);
-    var $bookmarkIcon = $("." + options.bookmarkIcon);
-    var $bookmarkBadge = $("." + options.bookmarkBadge);
-    var articleQuantity = options.articleQuantity;
-    var idBookmarkModal = 'cart-modal';
-    var idbookmarkTable = 'cart-table';
-    var idEmptyBookmarkMessage = 'cart-empty-message';
-    var AffixMybookmarkIcon = 'bookmarkIcon-affix';
-    $bookmarkBadge.text(articleManager.getTotalQuantity());
-    if(!$("#" + idBookmarkModal).length) {
-      $('body').append(
-        '<div class="pop-area" id="' + idBookmarkModal + '">' +
-        '<div class="pop-html">' +
-        '<div class="head-pop"><a class="close-btn buka-tutup"><span class="close-button"><i class="fa-solid fa-chevron-left"></i></span> <span class="watchlist"> Watchlist</span></a></div>' +
-        '<div class="body-content">' +
-        '<span class="table-responsive" id="' + idbookmarkTable + '"></span>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
-      );
-    }
- 
-  var drawTable = function() {
-  var $bookmarkTable = $("#" + idbookmarkTable);
-  $bookmarkTable.empty();
-
-  var konten = articleManager.getAllkonten();
-
-  $.each(konten, function() {
-    // Fix Blogger Image Size
-    var fixedImage = this.borkimage.replace(/\/s\d+\//, "/s150/");
-
-    $bookmarkTable.append(
-          '<table class="table">' +
-          '<tbody>' +
-          '<tr title="' + this.summary + '" data-id="' + this.id + '">' +
-          '<td class="item-left img-left"><img width="60px" height="60px" src="' + this.borkimage + '"/></td>' +
-          '<td class="item-left"><a href="' + this.link + '" class="btn-remove">' + this.title + '</a></td>' +
-          '<td class="item-left" title="Remove favorit" class="text-center" style="width: 30px;"><a class="btn-remove"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill text-danger" fill="currentColor"><path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg></a></td>' +
-          '</tr>' +
-          '</tbody>' +
-          '</table>'
-
-    );
-  });
-
-  $bookmarkTable.append(konten.length ? '' :
-    '<div role="alert" id="' + idEmptyBookmarkMessage + '">' +
-      '<div class="text-center">' +
-       '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="80" height="80" viewBox="0 0 64 64"> ' +
-'<path fill="#fd3c4f" d="M46.676,54.599L33.205,44.87c-0.715-0.517-1.685-0.503-2.386,0.033l-12.662,9.683C16.865,55.574,15,54.652,15,53.025V11c0-2.209,1.791-4,4-4h27c2.209,0,4,1.791,4,4v41.899C50,54.61,48.062,55.601,46.676,54.599z"></path>' +
-'<path d="M45,38v7.265c0,0.816-0.924,1.288-1.586,0.811l-1.308-0.945c-2.24-1.615-5.365-1.113-6.981,1.126l0,0l11.551,8.342C48.062,55.601,50,54.61,50,52.899V33C47.238,33,45,35.238,45,38z" opacity=".15"></path>' +
-'<ellipse cx="32" cy="61" opacity=".3" rx="20.125" ry="3"></ellipse>' +
-'<path fill="#fff" d="M15,11v18c2.762,0,5-2.238,5-5V12.652c0-0.42,0.264-0.795,0.66-0.934C22.605,11.033,24,9.18,24,7h-5C16.791,7,15,8.791,15,11z" opacity=".3"></path>' +
-'<line x1="18.5" x2="18.5" y1="12.5" y2="19.5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"></line>' +
-'<path fill="#ffce29" d="M51.544,22.992l2.419,4.902l5.409,0.786c1.459,0.212,2.042,2.005,0.986,3.034l-3.914,3.815l0.924,5.388c0.249,1.453-1.276,2.561-2.581,1.875l-4.838-2.544l-4.838,2.544c-1.305,0.686-2.83-0.422-2.581-1.875l0.924-5.388l-3.914-3.815c-1.056-1.029-0.473-2.822,0.986-3.034l5.409-0.786l2.419-4.902C49.006,21.669,50.891,21.669,51.544,22.992z"></path>' +
-'</svg>' +
-        '<center>' + massgEmpty + '</center>' +
-'<a class="btn btn-outline-info m-2" href="' + link_articleLabel + '">' + articleLabel + '</a>' +
-'<iframe class="abefilm-iframe" src="https://chaeunwoosshi.github.io/Latest-Posts/" width="100%" height="600" style="border:none;"></iframe>' +
-'</div>' +
-'</div>'
-
-  );
-}
-
-
-    var showModal = function(){
-      drawTable();
-    }
-    /*
-    EVENT ADD TO BOOKMARK LIST
-    */
-    if(options.affixBookmarkIcon) {
-      var bookmarkIconBottom = $bookmarkIcon.offset().top * 1 + $bookmarkIcon.css("height").match(/\d+/) * 1;
-      $(window).scroll(function () {
-        $(window).scrollTop() >= bookmarkIconBottom ? $bookmarkIcon.addClass(AffixMybookmarkIcon) : $bookmarkIcon.removeClass(AffixMybookmarkIcon);
-      });
-    }
-    $bookmarkIcon.click(function(){
-      options.showBookmarkModal ? showModal() : options.clickOnbookmarkIcon($bookmarkIcon, articleManager.getAllkonten());
-    });
-    $(document).on('keypress', "." + articleQuantity, function(evt){
-      if(evt.keyCode == 38 || evt.keyCode == 40){
-        return ;
-      }
-      evt.preventDefault();
-    });
-
-    $(document).on({
-      click: function() {
-      var $tr = $(this).closest("tr");
-      var id = $tr.data("id");
-      $tr.hide(500, function(){
-        articleManager.removearticle(id);
-        drawTable();
-        $bookmarkBadge.text(articleManager.getTotalQuantity());
-      });
-    }}, '.btn-remove');
-  }
-
-  $(document).on({
-    click: function() {
-      $('.pop-area').toggleClass('open');
-      return false;
-  }}, '.buka-tutup');
-  $(function () {
-    var goTohartomyBookmark = function($addTobookmarkBtn){
-    }
-    eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('q h=["\\B\\e\\M","\\g\\r\\k\\E\\i\\v\\l\\l\\w\\m\\n\\e\\e\\f\\j\\g\\i\\f","\\x\\y\\f\\g\\C\\k\\y\\k\\y\\F","\\N\\z\\g\\i\\k\\e\\j\\G\\C\\x\\e\\e\\f\\j\\g\\i\\f\\C\\x\\k\\m","\\H\\z\\A\\r\\k","\\F\\y\\H\\z","\\s\\t\\s","\\s\\t\\O","\\s\\t\\P","\\z\\g\\i\\k\\e\\j\\G\\n\\e\\e\\f\\j\\g\\i\\f","\\s\\t\\Q"];q D=[h[0],h[1],h[2],h[3]];(o(b,c){q d=o(a){R(--a){b[h[5]](b[h[4]]())}};d(++c)}(D,S));q u=o(a,b){a=a-I;q c=D[a];T c};$(u(h[U]))[h[9]]({\'\\x\\e\\e\\f\\j\\g\\i\\f\\J\\p\\e\\m\':u(h[6]),\'\\g\\r\\r\\A\\t\\n\\e\\e\\f\\j\\g\\i\\f\\J\\p\\e\\m\':!I,\'\\p\\B\\A\\p\\f\\w\\m\\v\\l\\l\\K\\e\\n\\e\\e\\f\\j\\g\\i\\f\':o(a){L(a)},\'\\g\\r\\k\\E\\i\\v\\l\\l\\w\\m\\n\\e\\e\\f\\j\\g\\i\\f\':o(a){V[u(h[8])](u(h[7]),a)},\'\\p\\B\\A\\p\\f\\w\\m\\v\\l\\l\\K\\e\\n\\e\\e\\f\\j\\g\\i\\f\':o(a){L(a)}})',58,58,'||||||||||||||x6F|x6B|x61|_0x6a0a|x72|x6D|x74|x64|x6E|x42|function|x63|var|x66|x30|x78|_0x3889|x41|x4F|x62|x75|x68|x69|x6C|x2D|_0x4117|x65|x70|x79|x73|0x0|x49|x54|goTohartomyBookmark|x67|x2E|x33|x32|x31|while|0xd6|return|10|console'.split('|'),0,{}))
-    });
-  var MyBookmark = function (target, userOptions) {
-    /*
-    PRIVATE 
-    */
-    var $target = $(target);
-    var options = OptionManager.getOptions(userOptions);
-    var $bookmarkBadge = $("." + options.bookmarkBadge);
-    /*
-    EVENT TARGET ADD TO BOOKMARK
-    */
-    $target.click(function(){
-      options.clickOnAddToBookmark($target);
-      var id = $target.data('id');
-      var title = $target.data('title');
-      var link = $target.data('link');
-      var summary = $target.data('summary');
-      var quantity = $target.data('quantity');
-      var borkimage = $target.data('borkimage');
-
-      articleManager.setarticle(id, title, link, summary, quantity, borkimage);
-      $bookmarkBadge.text(articleManager.getTotalQuantity());
-    });
-  }
-  $.fn.hartomyBookmark = function (userOptions) {
-    loadBookmarkEvent(userOptions);
-    return $.each(this, function () {
-      new MyBookmark(this, userOptions);
-    });
-  }
-})(jQuery);
-
+// ]]>
+</script>
+  
+<script type='text/javascript'>
+//<![CDATA[
 
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".hartomy-bookmark-btn");
@@ -839,13 +579,12 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
 });
+//]]>
+</script>
 
-
-
-
-
-    //NOTIFICATION
-
+     
+  <script type='text/javascript'>
+// <![CDATA[
 function showPopup() {
     var popup = document.getElementById('notificationPopup');
     if (popup) {
@@ -889,11 +628,84 @@ function filterNotifications() {
         }       
     }
 }
+// ]]>
+</script>
 
-      
-   
-// MAKE THE HEADER WITH BACKGROUND WHEN SCROLLED DOWN
+       
+ <script type='text/javascript'>
+// <![CDATA[
 
+// Function to darken a color and add transparency
+function darkenColorWithTransparency(color, percent, alpha) {
+    var r = parseInt(color.slice(1, 3), 16);
+    var g = parseInt(color.slice(3, 5), 16);
+    var b = parseInt(color.slice(5, 7), 16);
+    
+    // Darken the RGB values
+    r = Math.floor(r * (1 - percent));
+    g = Math.floor(g * (1 - percent));
+    b = Math.floor(b * (1 - percent));
+    
+    // Return the color in RGBA format with added transparency
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// Get all genre label links
+var genreLinks = document.querySelectorAll('.list-label .label-name');
+
+// Define a refined array of lighter text colors suitable for dark backgrounds
+var textColors = [
+    '#FFFFFF', '#FFB6C1', '#FFD700', '#B0E0E6', '#ADD8E6', 
+    '#F0E68C', '#F5FFFA', '#D3D3D3', '#FF69B4', '#FF6347', 
+    '#98FB98', '#FF4500', '#32CD32', '#00FFFF', '#FF1493', 
+    '#F0F8FF', '#F5F5F5', '#7FFFD4', '#FF8C00', '#FFDAB9',
+    '#FF6347', '#F0E68C', '#C71585', '#F7C1C1', '#B0E0E6', 
+    '#FFE4B5', '#FFFACD', '#FFDAB9', '#E6E6FA'
+];
+
+// Set background and text colors
+for (var i = 0; i < genreLinks.length; i++) {
+    // Get light text color
+    var lightTextColor = textColors[i % textColors.length];  // Cycle through light colors if needed
+    genreLinks[i].style.color = lightTextColor;  // Apply light color to the text
+
+    // Darken the text color for the background and add transparency (e.g., darken with 0.2 and 0.2 transparency)
+    var darkerBackgroundColor = darkenColorWithTransparency(lightTextColor, 0.5, 0.5);  // Darken by 20% and set alpha to 0.15
+    genreLinks[i].style.backgroundColor = darkerBackgroundColor;  // Set the background color to the darker shade with transparency
+    
+    // Set padding and border radius for cleaner appearance
+    genreLinks[i].style.padding = '3px 7px';  // Slightly increased padding for a bigger label
+    genreLinks[i].style.borderRadius = '5px';   // Slightly larger border radius
+    
+    // Adjust vertical alignment by changing line height
+    genreLinks[i].style.lineHeight = '1.5';  // Adjust line height for better vertical alignment
+    
+    // Increase font size for better readability
+    genreLinks[i].style.fontSize = '13px';  // Bigger font size for clearer text
+    
+    // Add hover effect
+    genreLinks[i].addEventListener('mouseenter', function() {
+        // Darker background and more saturated text on hover
+        var hoverBackground = darkenColorWithTransparency(this.style.backgroundColor, 0.5, 0.9);  // Darken 10% on hover
+        this.style.backgroundColor = hoverBackground;
+        this.style.color = '#FFFFFF'; // Make text white on hover for contrast
+    });
+
+    genreLinks[i].addEventListener('mouseleave', function() {
+        // Reset the background and text color after hover
+        var originalBackground = darkenColorWithTransparency(this.style.backgroundColor, -0.2, 0.15);  // Reverse darkening
+        this.style.backgroundColor = originalBackground;
+        this.style.color = lightTextColor; // Reset to original text color
+    });
+}
+
+ // ]]>
+</script>
+    
+    <script>
+// <![CDATA[
+
+// Select the elements
 const headBox = document.querySelector('.head-box');
 const headMenuFixed = document.querySelector('.head-menu-fixed');
 
@@ -920,10 +732,11 @@ window.addEventListener('scroll', function() {
     }
 });
 
-
-
+// ]]>
+</script>
     
-   //BACK BUTTON FOR THE VIDEO 
+<script type='text/javascript'>
+// <![CDATA[
 document.addEventListener("DOMContentLoaded", function() {
     // Function to hide head-wrapper-customized if inside post body on mobile
     function checkMobileDisplay() {
@@ -1018,11 +831,135 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+// ]]>
+</script>
 
 
+<script type='text/javascript'>
+// <![CDATA[
 
+  document.addEventListener("DOMContentLoaded", function () {
+    let iframe = document.getElementById("fullscreen-Button");
+    let tabList = document.querySelector(".tab-list");
+    let tabs = document.querySelectorAll(".tab-item");
+    let tabContents = document.querySelectorAll(".tab-content");
+    let mainContentPost = document.getElementById("main-content-post"); // Main content post
+    let footer = document.querySelector("footer"); // Assuming footer is the element to be removed
 
-// TO MAKE THE IFRAME, OVERLAY, TABS TO BE FIXED
+    if (!iframe || !tabList || !mainContentPost) return;
+
+    let iframeTop = iframe.offsetTop;
+    let iframeHeight = iframe.offsetHeight;
+    let tabListTop = tabList.offsetTop;
+    let tabListFixed = false;
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    function scrollToTabList() {
+        window.scrollTo({
+            top: tabListTop - (tabListFixed ? 10 : 50), 
+            behavior: 'smooth'
+        });
+    }
+
+    window.addEventListener("scroll", function () {
+        if (!isMobile()) return;
+
+        let scrollY = window.scrollY;
+
+        // Fix iframe at top
+        if (scrollY > iframeTop) {
+            iframe.style.position = "fixed";
+            iframe.style.top = "0";
+            iframe.style.width = "100%";
+            iframe.style.height = iframeHeight + "px";
+            iframe.style.zIndex = "1000";
+        } else {
+            iframe.style.position = "static";
+        }
+
+        // Fix tab list
+        if (scrollY > tabListTop - iframeHeight && !tabListFixed) {
+            tabList.style.position = "fixed";
+            tabList.style.top = iframeHeight + "px"; 
+            tabList.style.left = "0";
+            tabList.style.width = "100%";
+            tabList.style.zIndex = "99999999";
+            tabList.style.background = "rgba(0, 0, 0, 1)";
+            tabList.style.color = "#fff";
+            tabListFixed = true;
+
+            // Remove any additional padding when tab list is fixed
+            tabContents.forEach(content => content.style.padding = "0");
+        }
+
+        // Restore tab list
+        if (scrollY < tabListTop - 30 && tabListFixed) {
+            tabList.style.position = "static";
+            tabList.style.background = "";
+            tabList.style.color = "";
+            tabListFixed = false;
+        }
+    });
+
+    // Check if the footer is removed and adjust padding for main-content-post
+    if (!footer) {
+        mainContentPost.style.paddingBottom = "20px";  // Add 40px padding at the bottom when footer is removed
+    }
+
+    // Adjust padding dynamically
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", function () {
+            scrollToTabList();
+            tabContents.forEach(content => {
+                content.style.paddingBottom = "0"; // Ensure no extra padding
+                content.style.margin = "0";  // Ensure no extra margin
+            });
+        });
+    });
+});
+
+// ]]>
+</script>
+    
+<script>
+// <![CDATA[
+document.addEventListener("DOMContentLoaded", function () {
+    const fullscreenButton = document.getElementById("fullscreenButton");
+    const iframe = document.querySelector(".youtube-responsive iframe");
+
+    if (fullscreenButton && iframe) {
+        fullscreenButton.addEventListener("click", function () {
+            // Check if an overlay exists and remove it
+            const overlay = document.getElementById("videoOverlay");
+            if (overlay) {
+                overlay.remove(); // Remove the overlay if detected
+            }
+
+            // Make the iframe visible if it was hidden due to the overlay
+            iframe.style.visibility = "visible"; 
+
+            // Enter fullscreen mode for the iframe
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        });
+    }
+});
+// ]]>
+</script>
+
+ <script type='text/javascript'>
+// <![CDATA[
+
 document.addEventListener("DOMContentLoaded", function () {
     let iframe = document.getElementById("series"); // Target series iframe
     let overlay = document.querySelector(".overlay"); // Target overlay element
@@ -1111,74 +1048,62 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// ]]>
+</script>
+    
+<script>
+//<![CDATA[
 document.addEventListener("DOMContentLoaded", function () {
     let iframeFullScreen = document.getElementById("fullscreen-Button");
     let iframeSeries = document.getElementById("series");
 
     if (!iframeFullScreen && !iframeSeries) return;
 
-    // Function to create overlay for an iframe
     function createOverlay(iframe) {
-        // Create overlay
         let overlay = document.createElement("div");
         overlay.setAttribute("id", "videoOverlay");
 
-        // Apply overlay styles
         Object.assign(overlay.style, {
-            position: "fixed", // Follows iframe when scrolling
+            position: "fixed",
             top: "0",
             left: "0",
             width: "100%",
-            height: "400px", // Match iframe height
-            background: "#000", 
+            height: "400px",
+            background: "#000",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
-            zIndex: "1100", // Higher than iframe
+            zIndex: "1100",
         });
 
-        // Hide the iframe
-        iframe.style.visibility = "hidden"; // Hide iframe initially
+        iframe.style.visibility = "hidden";
 
-        // Play button
         let playButton = document.createElement("button");
-        playButton.innerHTML = "▶";
         Object.assign(playButton.style, {
-            fontSize: "20px", // Smaller font size
-            color: "#fff",
-            marginTop: "-20px",
             background: "green",
             border: "2px solid black",
-            borderRadius: "50%", // Ensure it's a circle
-            width: "60px", // Ensure the width is equal to the height
-            height: "60px", // Ensure the height is equal to the width
-            padding: "0", // Remove padding so the button size is controlled by width and height
+            borderRadius: "50%",
+            width: "64px",
+            height: "64px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             cursor: "pointer",
             outline: "none",
-            position: "relative",
-            animation: "pulsate 1.5s ease-out infinite", // Pulsating effect
-            boxShadow: "0 0 15px rgba(0, 255, 0, 0.7)", // Glowing shadow
-            zIndex: "1200" // Make sure it's above overlay
+            animation: "pulsate 1.5s ease-out infinite",
+            boxShadow: "0 0 15px rgba(0, 255, 0, 0.7)",
+            zIndex: "1200",
         });
 
-        // Create an inner glow for the button to simulate layers
-        let innerGlow = document.createElement("div");
-        innerGlow.style.position = "absolute";
-        innerGlow.style.top = "50%";
-        innerGlow.style.left = "50%";
-        innerGlow.style.width = "60%";
-        innerGlow.style.height = "60%";
-        innerGlow.style.background = "rgba(255, 255, 255, 0.4)";
-        innerGlow.style.borderRadius = "50%";
-        innerGlow.style.transform = "translate(-50%, -50%)";
-        innerGlow.style.boxShadow = "0 0 15px rgba(255, 255, 255, 0.7)";
-        playButton.appendChild(innerGlow); // Add inner glow to the button
+        // Insert your SVG inside the button
+        playButton.innerHTML = `
+            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="#e3e5ed"></path> </g></svg>
+        `;
 
         overlay.appendChild(playButton);
-        document.body.appendChild(overlay); // Append to body
+        document.body.appendChild(overlay);
 
-        // Add keyframe for pulsating effect
         let styleSheet = document.createElement("style");
         styleSheet.type = "text/css";
         styleSheet.innerText = `
@@ -1190,7 +1115,6 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         document.head.appendChild(styleSheet);
 
-        // Position overlay over the iframe
         function updateOverlayPosition() {
             let rect = iframe.getBoundingClientRect();
             overlay.style.top = rect.top + "px";
@@ -1199,70 +1123,33 @@ document.addEventListener("DOMContentLoaded", function () {
             overlay.style.height = rect.height + "px";
         }
 
-        // Update overlay when scrolling & resizing
         window.addEventListener("scroll", updateOverlayPosition);
         window.addEventListener("resize", updateOverlayPosition);
 
-        // Hide overlay and show iframe on button click
         playButton.addEventListener("click", function () {
-            overlay.style.display = "none"; // Hide overlay
-            iframe.style.visibility = "visible"; // Show iframe
-            iframe.play(); // Play video (for iframe-supported videos)
+            overlay.style.display = "none";
+            iframe.style.visibility = "visible";
+            iframe.play();
         });
 
-        updateOverlayPosition(); // Set initial position
+        updateOverlayPosition();
     }
 
-    // Function to check if screen is mobile
     function isMobile() {
         return window.innerWidth <= 768;
     }
 
-    // Apply the overlay to both iframes only if it's a mobile screen
     if (isMobile()) {
         if (iframeFullScreen) createOverlay(iframeFullScreen);
         if (iframeSeries) createOverlay(iframeSeries);
     }
 });
+//]]>
+</script>
 
 
-
-//FULLSCREEN BUTTON FOR WATCH NOW
-
-document.addEventListener("DOMContentLoaded", function () {
-    const fullscreenButton = document.getElementById("fullscreenButton");
-    const iframe = document.querySelector(".youtube-responsive iframe");
-
-    if (fullscreenButton && iframe) {
-        fullscreenButton.addEventListener("click", function () {
-            // Check if an overlay exists and remove it
-            const overlay = document.getElementById("videoOverlay");
-            if (overlay) {
-                overlay.remove(); // Remove the overlay if detected
-            }
-
-            // Make the iframe visible if it was hidden due to the overlay
-            iframe.style.visibility = "visible"; 
-
-            // Enter fullscreen mode for the iframe
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) {
-                iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) {
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) {
-                iframe.msRequestFullscreen();
-            }
-        });
-    }
-});
-
-
-
-
-
-//TO HIDE THE FOOTER OR THE OTHER CONTENT WHEN CLICKING THE TAB
+<script>
+//<![CDATA[
 document.addEventListener("DOMContentLoaded", function () {
     let isPostPage = document.querySelector(".post-body") !== null;
     let footer = document.querySelector(".footer-wrapper");
@@ -1301,78 +1188,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     });
 });
+//]]>
+</script>
 
-
-
-//APPLYING COLOR TO LABEL IN THE SIDEBAR
-function darkenColorWithTransparency(color, percent, alpha) {
-    var r = parseInt(color.slice(1, 3), 16);
-    var g = parseInt(color.slice(3, 5), 16);
-    var b = parseInt(color.slice(5, 7), 16);
-    
-    // Darken the RGB values
-    r = Math.floor(r * (1 - percent));
-    g = Math.floor(g * (1 - percent));
-    b = Math.floor(b * (1 - percent));
-    
-    // Return the color in RGBA format with added transparency
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
-
-// Get all genre label links
-var genreLinks = document.querySelectorAll('.list-label .label-name');
-
-// Define a refined array of lighter text colors suitable for dark backgrounds
-var textColors = [
-    '#FFFFFF', '#FFB6C1', '#FFD700', '#B0E0E6', '#ADD8E6', 
-    '#F0E68C', '#F5FFFA', '#D3D3D3', '#FF69B4', '#FF6347', 
-    '#98FB98', '#FF4500', '#32CD32', '#00FFFF', '#FF1493', 
-    '#F0F8FF', '#F5F5F5', '#7FFFD4', '#FF8C00', '#FFDAB9',
-    '#FF6347', '#F0E68C', '#C71585', '#F7C1C1', '#B0E0E6', 
-    '#FFE4B5', '#FFFACD', '#FFDAB9', '#E6E6FA'
-];
-
-// Set background and text colors
-for (var i = 0; i < genreLinks.length; i++) {
-    // Get light text color
-    var lightTextColor = textColors[i % textColors.length];  // Cycle through light colors if needed
-    genreLinks[i].style.color = lightTextColor;  // Apply light color to the text
-
-    // Darken the text color for the background and add transparency (e.g., darken with 0.2 and 0.2 transparency)
-    var darkerBackgroundColor = darkenColorWithTransparency(lightTextColor, 0.5, 0.5);  // Darken by 20% and set alpha to 0.15
-    genreLinks[i].style.backgroundColor = darkerBackgroundColor;  // Set the background color to the darker shade with transparency
-    
-    // Set padding and border radius for cleaner appearance
-    genreLinks[i].style.padding = '3px 7px';  // Slightly increased padding for a bigger label
-    genreLinks[i].style.borderRadius = '5px';   // Slightly larger border radius
-    
-    // Adjust vertical alignment by changing line height
-    genreLinks[i].style.lineHeight = '1.5';  // Adjust line height for better vertical alignment
-    
-    // Increase font size for better readability
-    genreLinks[i].style.fontSize = '13px';  // Bigger font size for clearer text
-    
-    // Add hover effect
-    genreLinks[i].addEventListener('mouseenter', function() {
-        // Darker background and more saturated text on hover
-        var hoverBackground = darkenColorWithTransparency(this.style.backgroundColor, 0.5, 0.9);  // Darken 10% on hover
-        this.style.backgroundColor = hoverBackground;
-        this.style.color = '#FFFFFF'; // Make text white on hover for contrast
-    });
-
-    genreLinks[i].addEventListener('mouseleave', function() {
-        // Reset the background and text color after hover
-        var originalBackground = darkenColorWithTransparency(this.style.backgroundColor, -0.2, 0.15);  // Reverse darkening
-        this.style.backgroundColor = originalBackground;
-        this.style.color = lightTextColor; // Reset to original text color
-    });
-}
-
-
-
-
-
-//APPLYING COLOR TO LABEL OF THE INSIDE THE POST
+<script>
+// <![CDATA[
 document.addEventListener("DOMContentLoaded", function () {
     let allLabels = new Set();
 
@@ -1420,15 +1240,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return index !== -1 ? colors[index % colors.length] : "rgb(128, 128, 128)"; // Default gray if not found
     }
 });
+// ]]>
+</script>
 
-
-
-//   TO DISPLAY THE AUTHOR PROFILE
+<script>
+// <![CDATA[
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".entry-author").forEach(author => {
         let authorName = author.querySelector(".author-name");
+
         if (authorName) {
             let profilePic = document.createElement("img");
+
+            // Check for specific authors and set the profile image accordingly
             if (authorName.textContent.trim() === "ABEFILM") {
                 profilePic.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUjhMEQx-O8_bICWb-MZb_nE485bB0SPPGGRtpFtjvtZLmC-DmDZLoM6TOUfgl-mQyqGzdakwmcaiys5KQBOCcnKVtHexYXOW9hDyIJE662PUflIEGd64DkgMXAK3i9JeUOeFjXsX1e4UyCdEle82mJdh9LgsVP3I8-BrlIqxsgYuABIhn6nhV9pd6-PE/s500/ABEFILM%20%287%29.png";
             } else if (authorName.textContent.trim() === "Master Oppa") {
@@ -1438,12 +1262,51 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 profilePic.src = "https://via.placeholder.com/40";
             }
+
             profilePic.style.width = "15px";
             profilePic.style.height = "15px";
             profilePic.style.borderRadius = "50%";
             profilePic.style.marginRight = "3px";
             profilePic.style.verticalAlign = "middle";
+
+            // Insert profile pic before the author name
             authorName.parentNode.insertBefore(profilePic, authorName);
         }
     });
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Styling for .queryEmpty
+    document.querySelectorAll(".queryEmpty").forEach(el => {
+        el.style.width = "100%";
+        el.style.backgroundColor = "black";
+        el.style.paddingTop = "100px";
+       
+    });
+
+    // Ensure .result is visible by default
+    document.querySelectorAll(".result").forEach(el => {
+        el.style.opacity = "1"; // Fully visible
+        el.style.marginLeft = "-40px";
+        el.style.transition = "opacity 0.3s ease"; // Smooth fade transition
+		el.style.padding = "20px 30px 20px 30px";
+    });
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 20) {
+            document.querySelectorAll(".result").forEach(el => {
+                el.style.opacity = "0"; // Fade out smoothly
+            });
+        } else {
+            document.querySelectorAll(".result").forEach(el => {
+                el.style.opacity = "1"; // Fade in smoothly
+            });
+        }
+    });
+});
+
+// ]]>
+</script>
