@@ -1237,3 +1237,58 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+$(document).on('click', function (e) {
+    if ($(e.target).closest('.pop-html').length === 0 && !$(e.target).closest('.close-button').length) {
+        $('#cart-modal').removeClass('open');
+    }
+});
+
+
+// Initialize modal element
+const modal = document.getElementById('cart-modal');
+const modalContent = document.querySelector('.pop-html');
+const openButton = document.querySelector('.open-modal');
+const closeButton = document.querySelector('.close-button');
+
+// Apply initial styles using JS
+modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    z-index: 999;
+    transition: right 0.4s ease;
+`;
+
+modalContent.style.cssText = `
+    width: 80%;
+    max-width: 400px;
+    background: #fff;
+    height: 100%;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+`;
+
+// Show modal
+openButton.addEventListener('click', () => {
+    modal.style.right = '0';
+});
+
+// Hide modal when clicking outside content
+document.addEventListener('click', (e) => {
+    if (!modalContent.contains(e.target) && e.target !== openButton && e.target !== closeButton) {
+        modal.style.right = '-100%';
+    }
+});
+
+// Hide modal when clicking close button
+closeButton.addEventListener('click', () => {
+    modal.style.right = '-100%';
+});
